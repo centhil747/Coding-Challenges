@@ -1,0 +1,51 @@
+class Solution {
+      
+    // Find the number of covered side  
+    // for mat[i][j]. 
+    int row, col;
+    int numofneighbour(int mat[][],  
+                            int i, int j)  
+    { 
+          
+        int count = 0; 
+      
+        // UP 
+        if (i > 0 && mat[i - 1][j] == 1) 
+            count++; 
+      
+        // LEFT 
+        if (j > 0 && mat[i][j - 1] == 1) 
+            count++; 
+      
+        // DOWN 
+        if (i < row - 1 && mat[i + 1][j] == 1) 
+            count++; 
+      
+        // RIGHT 
+        if (j < col - 1 && mat[i][j + 1] == 1) 
+            count++; 
+      
+        return count; 
+    } 
+      
+    // Returns sum of perimeter of shapes 
+    // formed with 1s 
+    public int islandPerimeter(int[][] grid) { 
+          
+        int perimeter = 0; 
+        row = grid.length; //2
+        col = grid[0].length; //3
+        if(row == 0) return 0;
+        // Traversing the matrix and  
+        // finding ones to calculate  
+        // their contribution. 
+        for (int i = 0; i < row; i++) 
+            for (int j = 0; j < col; j++) 
+                if (grid[i][j] == 1) 
+                    perimeter += (4 -  
+                    numofneighbour(grid, i, j)); 
+      
+        return perimeter; 
+    } 
+    
+}

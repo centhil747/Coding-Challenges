@@ -1,0 +1,39 @@
+import java.math.BigInteger;
+class Solution {
+    public int[] plusOne(int[] digits) {
+        //Convert int array to sb
+        StringBuilder sb = new StringBuilder();
+
+        for (int intNum : digits) 
+        {
+             sb.append(intNum);
+        }
+        
+//         //int - Start
+//         int finalInt = Integer.parseInt(sb.toString()); // Convert sb to String to int
+//         finalInt++; // Add 1
+//         String newString = Integer.toString(finalInt); // Convert int to String
+//         //int - End
+        
+//         //Long - Start
+//         long finalLong = Long.parseLong(sb.toString()); // Convert sb to String to Long
+//         finalLong++; // Add 1
+//         String newString = Long.toString(finalLong); // Convert Long to String
+//         //Long - End
+        
+        //BigInteger - Start
+        BigInteger big = new BigInteger(sb.toString()); // Convert sb to String to BigInteger
+        big = big.add(BigInteger.ONE); // Add 1
+        String newString = big.toString(10); // 10 for decimal, Convert BigInteger to String
+        // BigInteger - End
+        
+        //Convert String to int array
+        int[] newIntArr = new int[newString.length()];
+        
+        for (int i = 0; i < newString.length(); i++)
+        {
+            newIntArr[i] = newString.charAt(i) - '0';
+        }
+        return newIntArr;
+    }
+}
